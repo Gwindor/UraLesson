@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ImageView;
 
 import java.io.File;
 
@@ -43,17 +41,14 @@ public class MainActivity extends AppCompatActivity implements FragmentET.EventF
     @Override
     public void somePhoto(Uri uri) {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.et);
-        if (fragment != null && fragment instanceof FragmentTV) {
-            View fragmentView = fragment.getView();
-            ImageView imageView = (ImageView) (fragmentView != null ? fragmentView.findViewById(R.id.photo) : null);
-            if (imageView != null)
-                imageView.setImageURI(uri);
+        if (fragment != null && fragment instanceof FragmentET) {
+            FragmentET fragmentET = (FragmentET) fragment;
+            fragmentET.setImageURI(uri);
         }
     }
 
     public Uri getUri() {
-        File file = new File(Environment.getExternalStorageDirectory(),
-                "test.jpg");
+        File file = new File(Environment.getExternalStorageDirectory(), "test.jpg");
         Uri outputFileUri = Uri.fromFile(file);
         return outputFileUri;
     }

@@ -73,6 +73,10 @@ public class FragmentET extends Fragment {
         });
     }
 
+    public void setImageURI(Uri imageURI) {
+        imgPhoto.setImageURI(imageURI);
+    }
+
     public interface EventFragmentET {
         void someEvent(String c);
     }
