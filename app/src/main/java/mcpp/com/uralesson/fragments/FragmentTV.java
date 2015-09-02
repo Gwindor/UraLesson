@@ -19,6 +19,7 @@ import mcpp.com.uralesson.R;
 import mcpp.com.uralesson.activitys.MainActivity;
 
 public class FragmentTV extends Fragment {
+    public static final int TAKE_PICTURE_REQUEST_CODE = 1;
     private final String SAVE_TAG = "tv";
     private final String TAG = FragmentTV.class.getCanonicalName();
     private Button btn;
@@ -60,14 +61,14 @@ public class FragmentTV extends Fragment {
                 File file = new File(Environment.getExternalStorageDirectory(), MainActivity.TEST_JPG);
                 outputFileUri = Uri.fromFile(file);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent, TAKE_PICTURE_REQUEST_CODE);
             }
         });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
+        if (requestCode == TAKE_PICTURE_REQUEST_CODE) {
             Log.d(TAG, outputFileUri.toString());
             PhotoEvent photoEvent = (PhotoEvent) getActivity();
             photoEvent.somePhoto(outputFileUri);
