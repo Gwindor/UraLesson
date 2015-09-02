@@ -1,10 +1,10 @@
 package mcpp.com.uralesson.activitys;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,7 +14,7 @@ import mcpp.com.uralesson.R;
 import mcpp.com.uralesson.fragments.FragmentET;
 import mcpp.com.uralesson.fragments.FragmentTV;
 
-public class MainActivity extends Activity implements FragmentET.EventFragmentET, FragmentTV.PhotoEvent {
+public class MainActivity extends AppCompatActivity implements FragmentET.EventFragmentET, FragmentTV.PhotoEvent {
     public static final String URI_PARAM = "uri file";
     private Uri uri = getUri();
 
@@ -23,7 +23,7 @@ public class MainActivity extends Activity implements FragmentET.EventFragmentET
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            getFragmentManager()
+            getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.et, FragmentET.instanceFragmentET(uri))
                     .add(R.id.tv, FragmentTV.instanceFragmentTV(uri))
@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements FragmentET.EventFragmentET
 
     @Override
     public void someEvent(String c) {
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.tv);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.tv);
         if (fragment != null && fragment instanceof FragmentTV) {
             FragmentTV fragmentTV = (FragmentTV) fragment;
             fragmentTV.setMyText(c);
@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements FragmentET.EventFragmentET
 
     @Override
     public void somePhoto(Uri uri) {
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.et);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.et);
         if (fragment != null && fragment instanceof FragmentTV) {
             View fragmentView = fragment.getView();
             ImageView imageView = (ImageView) (fragmentView != null ? fragmentView.findViewById(R.id.photo) : null);

@@ -1,9 +1,9 @@
 package mcpp.com.uralesson.fragments;
 
-import android.app.Activity;
-import android.app.Fragment;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,9 +36,9 @@ public class FragmentET extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        eventFragmentET = (EventFragmentET) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        eventFragmentET = (EventFragmentET) context;
     }
 
     @Override
