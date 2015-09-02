@@ -57,8 +57,7 @@ public class FragmentTV extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                File file = new File(Environment.getExternalStorageDirectory(),
-                        "test.jpg");
+                File file = new File(Environment.getExternalStorageDirectory(), MainActivity.TEST_JPG);
                 outputFileUri = Uri.fromFile(file);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
                 startActivityForResult(intent, 1);
