@@ -14,6 +14,7 @@ import mcpp.com.uralesson.fragments.FragmentTV;
 
 public class MainActivity extends AppCompatActivity implements FragmentET.EventFragmentET, FragmentTV.PhotoEvent {
     public static final String URI_PARAM = "uri file";
+    public static final String TEST_JPG = "test.jpg";
     private Uri uri = getUri();
 
     @Override
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements FragmentET.EventF
     }
 
     public Uri getUri() {
-        File file = new File(Environment.getExternalStorageDirectory(), "test.jpg");
+        File file = new File(Environment.getExternalStorageDirectory(), TEST_JPG);
         Uri outputFileUri = Uri.fromFile(file);
         return outputFileUri;
     }
