@@ -65,12 +65,16 @@ public class FragmentET extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (eventFragmentET != null) {
-                    eventFragmentET.someEvent(s.toString());
-                    Log.d(TAG, String.valueOf(s));
-                }
+                someEventCallback(s.toString());
             }
         });
+    }
+
+    private void someEventCallback(String s) {
+        if (eventFragmentET != null) {
+            eventFragmentET.someEvent(s.toString());
+            Log.d(TAG, String.valueOf(s));
+        }
     }
 
     public void setImageURI(Uri imageURI) {
